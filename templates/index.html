@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% import "post-preview.html" as post_macros %}
 {% block styles%}
   <link rel="stylesheet" href="{{ get_url(path="index.css") | safe }}">
 {% endblock styles %}
@@ -22,6 +23,7 @@
 
 
 {% block content %}
+<div class="info">
   <div class="profile">
     <div class="profile-container">
       <img src="{{ resize_image(path=config.extra.profile_large, width=280, height=373, op="fill") }}" alt="profile picture">
@@ -43,11 +45,24 @@
         {% endif %}
       </div>
     {% endif %}
-
-    <nav class="lower">
-      {% for link in config.extra.nav %}
-        <a href="{{ link.path }}">{{ link.name }}</a>
-      {% endfor %}
-    </nav>
   </div>
+</div>
+<div class="posts-container">
+  <div id="left">
+    <h2>Recent posts</h2>
+    {% set blogsec = get_section(path="blog/_index.md") %}
+    {% for post in blogsec.pages %}
+      {{ post_macros::post_preview(post=post) }}
+    {% endfor %}
+  </div>
+
+  <div id="right">
+    <h2>Projects</h2>
+    {% set projsec = get_section(path="projects/_index.md") %}
+    {% for post in projsec.pages %}
+      {{ post_macros::post_preview(post=post) }}
+    {% endfor %}
+  </div>
+</div>
+
 {% endblock content %}

@@ -70,32 +70,25 @@
 {% endblock %}
 
 {% block content %}
-  <div class="post-title">
-    <h1>{{ page.title }}</h1>
-    <small>
-      {{ page.date | date(format="%B %d, %Y") }}
-      {% if page.taxonomies.tags %}
-        - 
-        <span class="tags">
-          {% for tag in page.taxonomies.tags %}
-            <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{ tag }}</a>
-          {% endfor %}
-        </span>
-      {% endif %}
-    </small>
-  </div>
-
-  <div>
+  <div class="blog-post-content">
+    <div class="post-title">
+      <h1>{{ page.title }}</h1>
+      <small>
+        {{ page.date| date(format="%B %d, %Y") }} - {{ page.reading_time }} min read
+        {% if page.taxonomies.tags %}
+          -
+          <span class="tags">
+            {% for tag in page.taxonomies.tags %}
+              <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{ tag }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </small>
+    </div>
     {{ page.content | safe }}
   </div>
 
   <hr class="footer-rule" />
-
-  {% if config.extra.footer_about %}
-    <div class="footer-about">
-      {{ config.extra.footer_about | markdown | safe }}
-    </div>
-  {% endif %}
 
   <div class="related-container">
 
@@ -114,5 +107,19 @@
     {% endif %}
 
   </div>
+
+  <script src="https://utteranc.es/client.js"
+          repo="Starchery/personal-site"
+          issue-term="title"
+          theme="github-light"
+          crossorigin="anonymous"
+          async>
+  </script>
+
+  {% if config.extra.footer_about %}
+    <div class="footer-about">
+      <a href="#top">Back to top</a>
+    </div>
+  {% endif %}
 
 {% endblock content %}

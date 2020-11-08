@@ -92,17 +92,25 @@
     {% endblock styles %}
     {% block posthead %}{% endblock posthead %}
   </head>
+  <a name="top"></a>
   <body>
     {% block header %}
       <header>
-        <a class="profile-icon" href="/">
-          <img src="{{ resize_image(path=config.extra.profile_small, width=50, height=50, op="fill") }}" alt="profile picture">
-        </a>
-        <nav>
-          {% for link in config.extra.nav %}
-            <a href="{{ link.path }}">{{ link.name }}</a>
-          {% endfor %}
-        </nav>
+        <div id="hleft">
+          <div class="profile-icon">
+              <a href="/" class="headlink"><img src="{{ resize_image(path=config.extra.profile_small, width=50, height=50, op="fill") }}" alt="profile picture"></a>
+          </div>
+          <div class="site-title">
+            <a href="/" class="headlink">rand::site</a>
+          </div>
+        </div>
+        <div id="hright">
+          <nav>
+            {% for link in config.extra.nav %}
+              <a href="{{ link.path }}" class="headlink">{{ link.name }}</a>
+            {% endfor %}
+          </nav>
+        </div>
       </header>
     {% endblock header %}
     <main>

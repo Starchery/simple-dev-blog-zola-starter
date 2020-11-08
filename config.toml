@@ -25,17 +25,18 @@ taxonomies = [
 
 nav = [
   { name = "About", path = "/about/" },
-  { name = "Blog", path = "/blog/" }
+  { name = "Blog", path = "/blog/" },
+  { name = "Projects", path = "/projects/" }
 ]
 
-latest_text = "Check out my latest post:"
+latest_text = "Latest post: "
 
 icon = "icon.png"
 profile_small = "icon.png"
 profile_large = "profile.jpg"
 
-accent = "#05a081"
-accent_light = "#82d0c0"
+accent = "#0000ff"
+accent_light = "#0000ff"
 
 author = "John Doe"
 

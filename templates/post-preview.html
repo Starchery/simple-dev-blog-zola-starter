@@ -1,16 +1,22 @@
 {% macro post_preview(post) %}
-  <div class="post-preview">
-    <h3 class="post-title"><a href="{{ post.permalink }}">{{ post.title }}</a></h3>
-    <small>
-      {{ post.date| date(format="%B %d, %Y") }} - {{ post.word_count }} words - {{ post.reading_time }} mins
-    </small>
-    <div class="summary">
-      {% if post.summary -%}
-        {{ post.summary }}
+<div class="post-preview" style="margin-bottom: 3rem;">
+  <h3 class="post-title" style="margin-bottom: 0px;">
+    <a href="{{ post.permalink }}">{{ post.title }}</a>
+  </h3>
+  <small>
+    {{ post.date| date(format="%B %d, %Y") }} - {{ post.reading_time }} min read
+  </small>
+  <div class="summary">
+    {% if post.summary -%}
+      {{ post.summary }}
+    {% else %}
+      {% if post.description -%}
+        {{ post.description }}
       {% else %}
-        {{ post.content | safe | striptags | truncate(length=300) }}
+        {{ post.content | safe | striptags | truncate(length=125) }}
       {%- endif %}
-      <a href="{{ post.permalink }}">read more</a>
-    </div>
+    {%- endif %}
+    <a href="{{ post.permalink }}">read more</a>
   </div>
+</div>
 {% endmacro input %}
