@@ -1,10 +1,10 @@
 {% macro post_preview(post) %}
-<div class="post-preview" style="margin-bottom: 3rem;">
-  <h3 class="post-title" style="margin-bottom: 0px;">
+<div class="post-preview">
+  <h3 class="post-title">
     <a href="{{ post.permalink }}">{{ post.title }}</a>
   </h3>
   <small>
-    {{ post.date| date(format="%B %d, %Y") }} - {{ post.reading_time }} min read
+    {{ post.date| date(format="%B %d, %Y") }} &middot; {{ post.reading_time }} min read
   </small>
   <div class="summary">
     {% if post.summary -%}

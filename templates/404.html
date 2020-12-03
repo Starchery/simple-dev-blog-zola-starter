@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block styles%}
+  <link rel="stylesheet" href="{{ get_url(path="404.css") | safe }}">
+{% endblock styles %}
+
 {% block content %}
 <h1>404</h1>
 {% if config.extra.not_found_message %}

@@ -14,4 +14,9 @@
   {% for post in section.pages %}
     {{ post_macros::post_preview(post=post) }}
   {% endfor %}
+  {% if config.extra.footer_about %}
+    <div class="footer-about">
+      <a href="#top">Back to top</a>
+    </div>
+  {% endif %}
 {% endblock content %}

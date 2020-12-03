@@ -2,4 +2,9 @@
 
 {% block content %}
   {{ page.content | safe }}
+  {% if config.extra.footer_about %}
+    <div class="footer-about">
+      <a href="#top">Back to top</a>
+    </div>
+  {% endif %}
 {% endblock content %}

@@ -74,9 +74,9 @@
     <div class="post-title">
       <h1>{{ page.title }}</h1>
       <small>
-        {{ page.date| date(format="%B %d, %Y") }} - {{ page.reading_time }} min read
+        {{ page.date| date(format="%B %d, %Y") }} &middot; {{ page.reading_time }} min read
         {% if page.taxonomies.tags %}
-          -
+          &middot;
           <span class="tags">
             {% for tag in page.taxonomies.tags %}
               <a href="{{ get_taxonomy_url(kind="tags", name=tag) }}">{{ tag }}</a>
@@ -91,20 +91,24 @@
   <hr class="footer-rule" />
 
   <div class="related-container">
+  {% if page.earlier or page.later %}
+    <h2 class="related-container-header">See also</h2>
+    <div class="related-container-link-container">
+        <div class="link">
+        {% if page.earlier %}
+          <h3 class="link-header">Previous</h3>
+          <a href="{{ page.earlier.permalink }}">{{ page.earlier.title }}</a>
+        {% endif %}
+        </div>
 
-    {% if page.earlier %}
-      <div class="link">
-        Previous <br />
-        <a href="{{ page.earlier.permalink }}">{{ page.earlier.title }}</a>
-      </div>
+        <div class="link">
+        {% if page.later %}
+          <h3 class="link-header">Next</h3>
+          <a href="{{ page.later.permalink }}">{{ page.later.title }}</a>
+        {% endif %}
+        </div>
     {% endif %}
-
-    {% if page.later %}
-      <div class="link">
-        Next <br />
-        <a href="{{ page.later.permalink }}">{{ page.later.title }}</a>
-      </div>
-    {% endif %}
+    </div>
 
   </div>
 
