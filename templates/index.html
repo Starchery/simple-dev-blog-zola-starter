@@ -32,7 +32,7 @@
   <div class="content">
     {{ section.content | safe }}
 
-    {% if config.extra.latest_text %}
+    <!-- {% if config.extra.latest_text %}
       {% set blog_path = "blog" %}
       {% if config.extra.blog_path %}
         {% set_global blog_path = config.extra.blog_path %}
@@ -44,7 +44,7 @@
         {{ config.extra.latest_text }} <q><a href="{{ latest.permalink }}">{{ latest.title }}</a></q>
         {% endif %}
       </div>
-    {% endif %}
+    {% endif %} -->
   </div>
 </div>
 <div class="posts-container">
